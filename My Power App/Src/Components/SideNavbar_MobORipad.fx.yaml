@@ -1,6 +1,6 @@
 SideNavbar_MobORipad As CanvasComponent:
     CurrentActiveScreenSidebar: =App.ActiveScreen.Name
-    Fill: =RGBA(0, 13, 75, 1)
+    Fill: =RGBA(168, 0, 0, 1)
     Height: =Max(App.Height, App.MinScreenHeight)-80
     OnSelectCancelSidebar: ="Text"
     SIdebarItemsTable: |-
