@@ -1292,12 +1292,13 @@ Dashboard As screen:
                         ZIndex: =2
 
     Label1 As label:
+        Align: =Align.Center
         FontWeight: =FontWeight.Bold
-        Height: =131
+        Height: =80
         Size: =50
-        Text: ="Abcd   "
-        Width: =945
-        X: =162
+        Text: ="Abcd"
+        Width: =193
+        X: =1050
         ZIndex: =7
 
     DatePicker1 As datepicker:

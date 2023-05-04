@@ -37,7 +37,7 @@
                 "Name": "galleryTemplate1",
                 "Parent": "Navbar_Gal_Items",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 230,
+                "PublishOrderIndex": 232,
                 "Rules": [
                   {
                     "Category": "Design",
@@ -161,7 +161,7 @@
                 "Name": "lbl_title",
                 "Parent": "Navbar_Gal_Items",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 231,
+                "PublishOrderIndex": 233,
                 "Rules": [
                   {
                     "Category": "Data",
@@ -483,7 +483,7 @@
                 "Name": "rect_active",
                 "Parent": "Navbar_Gal_Items",
                 "PersistMetaDataIDKey": false,
-                "PublishOrderIndex": 232,
+                "PublishOrderIndex": 234,
                 "Rules": [
                   {
                     "Category": "Design",
@@ -688,7 +688,7 @@
             "Name": "Navbar_Gal_Items",
             "Parent": "Con_Header",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 229,
+            "PublishOrderIndex": 231,
             "Rules": [
               {
                 "Category": "Data",
@@ -947,7 +947,7 @@
             "Name": "Icon_logo",
             "Parent": "Con_Header",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 233,
+            "PublishOrderIndex": 235,
             "Rules": [
               {
                 "Category": "Design",
@@ -1201,7 +1201,7 @@
             "Name": "Icon_user",
             "Parent": "Con_Header",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 234,
+            "PublishOrderIndex": 236,
             "Rules": [
               {
                 "Category": "Design",
@@ -1463,7 +1463,7 @@
             "Name": "Icon_ham_menu",
             "Parent": "Con_Header",
             "PersistMetaDataIDKey": false,
-            "PublishOrderIndex": 235,
+            "PublishOrderIndex": 237,
             "Rules": [
               {
                 "Category": "Design",
@@ -1694,7 +1694,7 @@
         "Name": "Con_Header",
         "Parent": "Navbar",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 228,
+        "PublishOrderIndex": 230,
         "Rules": [
           {
             "Category": "Design",

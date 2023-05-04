@@ -93,7 +93,7 @@
         "Name": "user_img",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 209,
+        "PublishOrderIndex": 211,
         "Rules": [
           {
             "Category": "Data",
@@ -364,7 +364,7 @@
         "Name": "user_name",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 210,
+        "PublishOrderIndex": 212,
         "Rules": [
           {
             "Category": "Data",
@@ -695,7 +695,7 @@
         "Name": "user_postANDdept",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 211,
+        "PublishOrderIndex": 213,
         "Rules": [
           {
             "Category": "Data",
@@ -1054,7 +1054,7 @@
         "Name": "work_lbl",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 212,
+        "PublishOrderIndex": 214,
         "Rules": [
           {
             "Category": "Data",
@@ -1385,7 +1385,7 @@
         "Name": "lbl_Key_empID",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 213,
+        "PublishOrderIndex": 215,
         "Rules": [
           {
             "Category": "Data",
@@ -1716,7 +1716,7 @@
         "Name": "emp_id",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 214,
+        "PublishOrderIndex": 216,
         "Rules": [
           {
             "Category": "Data",
@@ -2047,7 +2047,7 @@
         "Name": "lbl_Key_empDept",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 215,
+        "PublishOrderIndex": 217,
         "Rules": [
           {
             "Category": "Data",
@@ -2378,7 +2378,7 @@
         "Name": "emp_dept",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 216,
+        "PublishOrderIndex": 218,
         "Rules": [
           {
             "Category": "Data",
@@ -2709,7 +2709,7 @@
         "Name": "lbl_Key_empRole",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 217,
+        "PublishOrderIndex": 219,
         "Rules": [
           {
             "Category": "Data",
@@ -3040,7 +3040,7 @@
         "Name": "emp_role",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 218,
+        "PublishOrderIndex": 220,
         "Rules": [
           {
             "Category": "Data",
@@ -3371,7 +3371,7 @@
         "Name": "lbl_Key_empRM",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 219,
+        "PublishOrderIndex": 221,
         "Rules": [
           {
             "Category": "Data",
@@ -3702,7 +3702,7 @@
         "Name": "emp_RM",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 220,
+        "PublishOrderIndex": 222,
         "Rules": [
           {
             "Category": "Data",
@@ -4033,7 +4033,7 @@
         "Name": "lbl_Key_empLocation",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 221,
+        "PublishOrderIndex": 223,
         "Rules": [
           {
             "Category": "Data",
@@ -4364,7 +4364,7 @@
         "Name": "emp_Location",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 222,
+        "PublishOrderIndex": 224,
         "Rules": [
           {
             "Category": "Data",
@@ -4723,7 +4723,7 @@
         "Name": "BasicInfo_lbl",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 223,
+        "PublishOrderIndex": 225,
         "Rules": [
           {
             "Category": "Data",
@@ -5054,7 +5054,7 @@
         "Name": "lbl_Key_empMOB",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 224,
+        "PublishOrderIndex": 226,
         "Rules": [
           {
             "Category": "Data",
@@ -5385,7 +5385,7 @@
         "Name": "emp_mob",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 225,
+        "PublishOrderIndex": 227,
         "Rules": [
           {
             "Category": "Data",
@@ -5716,7 +5716,7 @@
         "Name": "lbl_Key_empEmail",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 226,
+        "PublishOrderIndex": 228,
         "Rules": [
           {
             "Category": "Data",
@@ -6047,7 +6047,7 @@
         "Name": "emp_email",
         "Parent": "CMP_UserInfo",
         "PersistMetaDataIDKey": false,
-        "PublishOrderIndex": 227,
+        "PublishOrderIndex": 229,
         "Rules": [
           {
             "Category": "Data",
