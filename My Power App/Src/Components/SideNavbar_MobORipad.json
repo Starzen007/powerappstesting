@@ -1107,7 +1107,14 @@
         "ControlPropertyState": [
           "BorderColor",
           "BorderStyle",
-          "Fill",
+          {
+            "AFDDataSourceName": "",
+            "AutoRuleBindingEnabled": false,
+            "AutoRuleBindingString": "",
+            "InvariantPropertyName": "Fill",
+            "IsLockable": false,
+            "NameMapSourceSchema": "?"
+          },
           "X",
           {
             "AFDDataSourceName": "",
@@ -1245,7 +1252,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "RGBA(0, 0, 0, 0)",
+            "InvariantScript": "RGBA(255, 191, 0, 1)",
             "Property": "Fill",
             "RuleProviderType": "Unknown"
           },
@@ -1318,7 +1325,7 @@
       },
       "OnSelectCancelSidebar"
     ],
-    "LastModifiedTimestamp": "638187951036639124",
+    "LastModifiedTimestamp": "638187955122824231",
     "Name": "SideNavbar_MobORipad",
     "Rules": [
       {
@@ -1335,7 +1342,7 @@
       },
       {
         "Category": "Design",
-        "InvariantScript": "RGBA(0, 13, 75, 1)",
+        "InvariantScript": "RGBA(168, 0, 0, 1)",
         "Property": "Fill",
         "RuleProviderType": "System"
       },
@@ -1423,7 +1430,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638187951036639124",
+  "LastModifiedTimestamp": "638187955122824231",
   "Name": "9e377bcea6304b09af120fbc9f2c91df",
   "OverridableProperties": {},
   "Version": "638169878002806598"

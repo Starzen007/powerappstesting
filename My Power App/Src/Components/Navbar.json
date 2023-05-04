@@ -1864,7 +1864,7 @@
       "OnSelectAnyNavItem",
       "OnLogoClick"
     ],
-    "LastModifiedTimestamp": "638187951036635298",
+    "LastModifiedTimestamp": "638187951888622216",
     "Name": "Navbar",
     "Rules": [
       {
@@ -2014,7 +2014,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638187951036635298",
+  "LastModifiedTimestamp": "638187951888622216",
   "Name": "f5dba99ef76d480e8952c7d04cf46655",
   "OverridableProperties": {},
   "Version": "638169877815327427"

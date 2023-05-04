@@ -28,6 +28,7 @@ SideNavbar_MobORipad As CanvasComponent:
     ZIndex: =1
 
     Con_SIdebar As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(255, 191, 0, 1)
         Height: =Parent.Height
         Width: =200
         ZIndex: =1
