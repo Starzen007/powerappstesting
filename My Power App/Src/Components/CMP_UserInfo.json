@@ -6331,7 +6331,7 @@
       "ZIndex",
       "CurrentUserData"
     ],
-    "LastModifiedTimestamp": "638187946756726689",
+    "LastModifiedTimestamp": "638187951036631728",
     "Name": "CMP_UserInfo",
     "Rules": [
       {
@@ -6406,7 +6406,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638187946756726689",
+  "LastModifiedTimestamp": "638187951036631728",
   "Name": "47a7d09c29cb4a649e0908df96316c78",
   "OverridableProperties": {},
   "Version": "638170723712752642"

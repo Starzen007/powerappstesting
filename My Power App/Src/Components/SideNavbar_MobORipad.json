@@ -1318,7 +1318,7 @@
       },
       "OnSelectCancelSidebar"
     ],
-    "LastModifiedTimestamp": "638187946756734709",
+    "LastModifiedTimestamp": "638187951036639124",
     "Name": "SideNavbar_MobORipad",
     "Rules": [
       {
@@ -1423,7 +1423,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638187946756734709",
+  "LastModifiedTimestamp": "638187951036639124",
   "Name": "9e377bcea6304b09af120fbc9f2c91df",
   "OverridableProperties": {},
   "Version": "638169878002806598"
