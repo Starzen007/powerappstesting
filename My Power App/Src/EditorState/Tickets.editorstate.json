@@ -1291,7 +1291,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Canvas20_1",
-      "ParentIndex": 3,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4465,7 +4465,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ContainerForm_User",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -4620,7 +4620,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "ContainerGallery_User",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -6767,7 +6767,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label_tkt_history_txt_sendername",
-      "ParentIndex": 2,
+      "ParentIndex": 3,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -7069,7 +7069,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "Label_tkt_history_txt_title",
-      "ParentIndex": 3,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -11220,7 +11220,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_tkt_history_header_Admin_Sender",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12179,7 +12179,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "lbl_tkt_history_header_title",
-      "ParentIndex": 1,
+      "ParentIndex": 0,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12468,7 +12468,7 @@
       },
       "MetaDataIDKey": "",
       "Name": "Navbar_4",
-      "ParentIndex": 0,
+      "ParentIndex": 1,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -12620,7 +12620,7 @@
       },
       "MetaDataIDKey": "",
       "Name": "SideNavbar_MobORipad_4",
-      "ParentIndex": 5,
+      "ParentIndex": 2,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
