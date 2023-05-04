@@ -107,11 +107,11 @@
     "DocumentType": "App",
     "EnableInstrumentation": false,
     "FileID": "06c5ee7a-36de-45dc-9954-0459e68f8eb5",
-    "Id": "06c5ee7a-36de-45dc-9954-0459e68f8eb5",
+    "Id": "26b86b59-d802-4c4a-a515-5a9910d34ff6",
     "InstrumentationKey": "",
     "LocalDatabaseReferences": "{}",
     "ManualOfflineProfileId": "",
-    "Name": "Learning management system",
+    "Name": "Learning+management+system.msapp",
     "OriginatingVersion": "1.330",
     "ParserErrorCount": 0
   },
