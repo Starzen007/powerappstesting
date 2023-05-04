@@ -118,7 +118,7 @@ Tickets As screen:
             Size: |-
                 =If(App.Width<510 , 12,
                 18)
-            Text: ="Ticket History"
+            Text: ="TH"
             Width: |-
                 =If(App.Width<510 , 170,
                 254)
