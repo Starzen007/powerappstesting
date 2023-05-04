@@ -1298,7 +1298,8 @@ Dashboard As screen:
         Size: =50
         Text: ="Abcd"
         Width: =193
-        X: =1050
+        X: =1046
+        Y: =222
         ZIndex: =7
 
     DatePicker1 As datepicker:
@@ -1306,4 +1307,15 @@ Dashboard As screen:
         X: =696
         Y: =348
         ZIndex: =8
+
+    Label1_1 As label:
+        Align: =Align.Center
+        FontWeight: =FontWeight.Bold
+        Height: =80
+        Size: =50
+        Text: ="Abcd dhbhdsbh"
+        Width: =193
+        X: =783
+        Y: =222
+        ZIndex: =9
 
