@@ -1,0 +1,212 @@
+"'My Learning Path' As screen":
+    OnVisible: =
+
+    Gallery6 As gallery.variableTemplateHeightGallery:
+        DelayItemLoading: =true
+        Height: =Parent.Height- Navbar_2.Height
+        Items: =Filter('Course Requested','Requested User'= varUserInfo.EMP_NAME And Status="OK")
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplateSize: =508
+        Width: =App.Width
+        Y: =80
+        ZIndex: =1
+
+        Gallery5_1 As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: |-
+                =If(
+                    App.Width <= 800,
+                    CountRows(Gallery5_1.AllItems) * 320,
+                    App.Width > 800 And App.Width < 1200,
+                    If(
+                        Mod(
+                            CountRows(Gallery5_1.AllItems),
+                            2
+                        ),
+                        (Int(CountRows(Gallery5_1.AllItems) / 2) + 1) * 320,
+                        (Int(CountRows(Gallery5_1.AllItems) / 2)) * 320
+                    ),
+                    If(
+                        Mod(
+                            CountRows(Gallery5_1.AllItems),
+                            3
+                        ),
+                        (Int(CountRows(Gallery5_1.AllItems) / 3) + 1) * 320,
+                        (Int(CountRows(Gallery5_1.AllItems) / 3)) * 320
+                    )
+                )
+            Items: =Filter('Topics per Course', ThisItem.Title=Title)
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateSize: =300
+            Width: =Parent.Width-30
+            WrapCount: |
+                =If(App.Width<=800 , 1 , App.Width>800 And App.Width<1200 , 2 , 3)
+            X: =15
+            Y: =Rectangle1.Y + Rectangle1.Height+10
+            ZIndex: =1
+
+            Label6_1 As label:
+                FontWeight: =FontWeight.Semibold
+                Height: =58
+                OnSelect: =Select(Parent)
+                Size: =14
+                Text: =ThisItem.'Topic Name'
+                Width: = Icon6.X  
+                X: =3
+                Y: =3
+                ZIndex: =1
+
+            Video1_1 As videoPlayback:
+                Height: =180
+                Media: =ThisItem.'Video Link'
+                OnEnd: =Select(Icon6)
+                Width: =350
+                X: =If(App.Width<=800 , (Parent.Width - Video1_1.Width ) / 2 , App.Width>800 And App.Width<1200 , (Parent.Width / 2 - Video1_1.Width ) / 2 , (Parent.Width / 3 - Video1_1.Width ) / 2)
+                Y: =85
+                ZIndex: =2
+
+            Icon6 As icon.Ribbon:
+                Color: =Color.Gold
+                DisabledColor: =Color.DarkGreen
+                DisplayMode: |
+                    =If(
+                        !IsBlank(
+                            LookUp(
+                                'Topic Done By User',
+                                'User Name' = varUserInfo.EMP_NAME And Title = ThisItem.Title And 'Topic Name'=ThisItem.'Topic Name'
+                            )
+                        ),
+                        DisplayMode.Disabled,
+                        DisplayMode.Edit
+                    )
+                Height: =42
+                Icon: =Icon.Ribbon
+                OnSelect: |-
+                    =
+                    If(IsBlank(LookUp('Topic Done By User',Title= ThisItem.Title And 'User Name'= varUserInfo.EMP_NAME And 'Topic Name'= ThisItem.'Topic Name'))
+                    ,
+                    Patch(
+                        'Topic Done By User',
+                        Defaults('Topic Done By User'),
+                        {
+                            Title: ThisItem.Title,
+                            'User Name': varUserInfo.EMP_NAME,
+                            'Topic Name': ThisItem.'Topic Name'
+                        }
+                    ))
+                Width: =50
+                X: =If(App.Width<=800 , Parent.Width - Icon6.Width , App.Width>800 And App.Width<1200 , Parent.Width/2 - Icon6.Width , Parent.Width/3 - Icon6.Width) - 20
+                Y: =3
+                ZIndex: =3
+
+        Label5 As label:
+            FontWeight: =FontWeight.Bold
+            OnSelect: =Select(Parent)
+            Size: =15
+            Text: =ThisItem.Title
+            X: =6
+            Y: =3
+            ZIndex: =3
+
+        Rating1 As rating:
+            Default: |-
+                =With(
+                   {
+                      wComplete:
+                      Filter('Topic Done By User', 'User Name'=varUserInfo.EMP_NAME , Title = ThisItem.Title)
+                   },
+                   CountRows(wComplete)
+                )
+            DisabledFill: =Self.Fill
+            DisplayMode: =DisplayMode.View
+            FocusedBorderColor: =Self.BorderColor
+            Height: =40
+            HoverFill: =Self.Fill
+            Max: =CountRows(Gallery5_1.AllItems)
+            OnSelect: =Select(Parent)
+            PressedFill: =Self.Fill
+            Reset: =false
+            Visible: =!Label6.Visible
+            Width: |-
+                =
+                
+                If(App.Width<=800 , (Rating1.Max)*30 , App.Width>800 And App.Width<1200 , (Rating1.Max)*45 , (Rating1.Max)*60)
+            X: =Parent.Width-Rating1.Width-25
+            Y: =0
+            ZIndex: =4
+
+        Rectangle1 As rectangle:
+            Height: =14
+            OnSelect: =
+            Width: =Parent.Width
+            Y: =66
+            ZIndex: =5
+
+        Rectangle1_1 As rectangle:
+            Height: =14
+            OnSelect: =
+            Width: =Parent.Width
+            Y: =Gallery5_1.Height + Gallery5_1.Y+10
+            ZIndex: =6
+
+        Label6 As label:
+            Align: =Align.Right
+            Color: =RGBA(127, 178, 57, 1)
+            Height: =Rating1.Height
+            OnSelect: =Select(Parent)
+            Size: =12
+            Text: ="Completed"
+            Visible: =Rating1.Default = Rating1.Max
+            Width: =300
+            X: =Rating1.X
+            Y: =Rating1.Y
+            ZIndex: =7
+
+    Navbar_2 As Navbar:
+        NavTableItems: =If(varUserIsAdmin , AdminNavTableData , varUserIsAssociate , AssociateNavTableData , HRNavTableData)
+        OnHamButtonClick: |-
+            =Set(VarUserProfileShow, false);
+            Set(VarSidebarShow, !VarSidebarShow);
+        OnLogoClick: |-
+            =//Refresh All Datasources
+            Concurrent(
+                Refresh('Course Requested'),
+                Refresh('Tickets Information'),
+                Refresh('Topics per Course'),
+                Refresh('User Information'),
+                Refresh('All Learning Paths'),
+                Refresh('Topic Done By User')
+            );
+        OnSelectAnyNavItem: =Set(VarUserProfileShow, false);
+        OnUserbtnClick: |-
+            =Set(VarSidebarShow, false);
+            Set(VarUserProfileShow, !VarUserProfileShow);
+        ZIndex: =2
+
+    SideNavbar_MobORipad_2 As SideNavbar_MobORipad:
+        OnSelectCancelSidebar: =Set(VarSidebarShow, !VarSidebarShow)
+        SIdebarItemsTable: =If(varUserIsAdmin , AdminNavTableData , varUserIsAssociate , AssociateNavTableData , HRNavTableData)
+        Visible: =VarSidebarShow
+        X: =Navbar_2.Width- SideNavbar_MobORipad_2.Width
+        Y: =80
+        ZIndex: =3
+
+    CMP_UserInfo_2 As CMP_UserInfo:
+        CurrentUserData: =varUserInfo
+        Visible: =VarUserProfileShow
+        X: =Max(App.Width, App.MinScreenWidth)-CMP_UserInfo_2.Width
+        Y: =80
+        ZIndex: =4
+
+    Label12_1 As label:
+        Align: =Align.Center
+        OnSelect: =
+        Text: ="No Enrolled Path"
+        Visible: =!CountRows( Gallery6.AllItems)
+        Width: =284
+        X: =(Parent.Width-Label12_1.Width)/2
+        Y: =Container4.Y+Container4.Height+25
+        ZIndex: =5
+

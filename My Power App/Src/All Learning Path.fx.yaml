@@ -1,0 +1,327 @@
+"'All Learning Path' As screen":
+    OnVisible: =
+
+    Container3 As groupContainer.manualLayoutContainer:
+        Height: =688
+        Visible: =varUserInfo.EMP_ROLE="ADMIN"
+        Width: =Parent.Width
+        Y: =80
+        ZIndex: =1
+
+        Gallery2 As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =608
+            Items: ='Course Requested'
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =
+                If(Label9.Visible, RGBA(168, 241, 176, 1),RGBA(245, 246, 132, 1) )
+            TemplatePadding: =1
+            TemplateSize: =72
+            Width: =Parent.Width
+            Y: =Container4.Height
+            ZIndex: =1
+
+            Label8 As label:
+                Align: =Align.Center
+                Height: =62
+                OnSelect: =Select(Parent)
+                Size: =If(App.Width<600 , 10 , 13)
+                Text: =ThisItem.'Requested User'
+                Width: =Label3.Width
+                X: =Label3.X
+                ZIndex: =1
+
+            Label8_1 As label:
+                Align: =Align.Center
+                Height: =62
+                OnSelect: =Select(Parent)
+                Size: =If(App.Width<600 , 10 , 13)
+                Text: =ThisItem.Title
+                Width: =Label3_1.Width
+                X: =Label3_1.X
+                ZIndex: =2
+
+            Label8_2 As label:
+                Align: =Align.Center
+                Height: =62
+                OnSelect: =Select(Parent)
+                Size: =If(App.Width<600 , 10 , 13)
+                Text: =ThisItem.'User Dept'
+                Width: =Label3_2.Width
+                X: =Label3_2.X
+                ZIndex: =3
+
+            Container6 As groupContainer.manualLayoutContainer:
+                Height: =72
+                Width: =Label3_3.Width
+                X: =Label3_3.X
+                ZIndex: =7
+
+                Label9 As label:
+                    Align: =Align.Center
+                    Height: =56
+                    OnSelect: =
+                    Size: =If(App.Width<600 , 10 , 13)
+                    Text: =ThisItem.Status
+                    Visible: =(ThisItem.Status="OK")
+                    Width: =Label3_3.Width
+                    Y: =6
+                    ZIndex: =1
+
+                Icon4 As icon.Check:
+                    Height: =If(App.Width<600 , 20 , 45)
+                    Icon: =Icon.Check
+                    OnSelect: |-
+                        =Patch('Course Requested',ThisItem,{Status:"OK"});
+                    Visible: =!(ThisItem.Status="OK")
+                    Width: = If(App.Width<750 , 20 , 45)
+                    X: =Icon4.Width
+                    Y: =(Parent.Height- Icon4.Height)/2
+                    ZIndex: =2
+
+                Icon4_1 As icon.Check:
+                    Height: =If(App.Width<600 , 20 , 45)
+                    Icon: =Icon.Cancel
+                    OnSelect: =Remove('Course Requested',ThisItem)
+                    Visible: =!(ThisItem.Status="OK")
+                    Width: = If(App.Width<750 , 20 , 45)
+                    X: =Parent.Width-Icon4_1.Width*2
+                    Y: =(Parent.Height- Icon4.Height)/2
+                    ZIndex: =3
+
+        Container4 As groupContainer.manualLayoutContainer:
+            Fill: =RGBA(116, 116, 116, 1)
+            Height: =80
+            Width: =Parent.Width
+            ZIndex: =6
+
+            Label3 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =If(App.Width<600 , 12 , 18)
+                Text: ="Requested User"
+                Width: =App.Width/4
+                ZIndex: =1
+
+            Label3_1 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Label3.Height
+                Size: =If(App.Width<600 , 12 , 18)
+                Text: ="Requested Course"
+                Width: =App.Width/4
+                X: =Label3.Width+Label3.X
+                ZIndex: =2
+
+            Label3_2 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Label3.Height
+                Size: =If(App.Width<600 , 12 , 18)
+                Text: ="User Dept"
+                Width: =App.Width/4
+                X: =Label3_1.Width+Label3_1.X
+                ZIndex: =3
+
+            Label3_3 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Label3_2.Height
+                Size: =If(App.Width<600 , 12 , 18)
+                Text: ="Status"
+                Width: =App.Width/4
+                X: =Label3_2.Width+Label3_2.X
+                ZIndex: =4
+
+        Label12 As label:
+            Align: =Align.Center
+            OnSelect: =
+            Text: ="No Request"
+            Visible: =!CountRows( Gallery2.AllItems)
+            Width: =284
+            X: =(Parent.Width-Label12.Width)/2
+            Y: =Container4.Y+Container4.Height+25
+            ZIndex: =7
+
+    Container7 As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height-Navbar_3.Height
+        Visible: =!(varUserInfo.EMP_ROLE="ADMIN")
+        Width: =Parent.Width
+        Y: =Navbar_3.Height
+        ZIndex: =2
+
+        Gallery3 As gallery.galleryVertical:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderThickness: =2
+            DelayItemLoading: =true
+            Fill: |-
+                =
+                RGBA(0,0,0,0)
+            Height: =Parent.Height-Container8.Height
+            Items: ='All Learning Paths'
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            TemplateFill: |-
+                =
+                If(Button4.Text="Enroll",RGBA(245, 246, 132, 1) , RGBA(168, 241, 176, 1))
+            TemplatePadding: =1
+            TemplateSize: =70
+            Width: =Parent.Width
+            Y: =Container8.Height
+            ZIndex: =1
+
+            Label4 As label:
+                Align: =Align.Center
+                Height: =Label10.Height-20
+                OnSelect: =Select(Parent)
+                Size: =If(App.Width<600 , 10 , 13)
+                Text: =ThisItem.Title
+                Width: =Label10.Width
+                X: =Label10.X
+                Y: =3
+                ZIndex: =1
+
+            Label4_1 As label:
+                Align: =Align.Center
+                Height: =Label10_1.Height-20
+                OnSelect: =Select(Parent)
+                Size: =If(App.Width<600 , 10 , 13)
+                Text: =ThisItem.CourseName
+                Width: =Label10_1.Width
+                X: =Label10_1.X
+                Y: =3
+                ZIndex: =2
+
+            Button4 As button:
+                DisplayMode: |-
+                    =If(
+                        !IsBlank(
+                            LookUp(
+                                'Course Requested',
+                                'Requested User' = varUserInfo.EMP_NAME And Title = ThisItem.Title,
+                                'Course Name'
+                            )
+                        ),
+                        DisplayMode.Disabled,
+                        DisplayMode.Edit
+                    )
+                Height: =If(App.Width<600 , 30 , 40)
+                OnSelect: |-
+                    =Patch(
+                        'Course Requested',
+                        Defaults('Course Requested'),
+                        {
+                            Title: ThisItem.Title,
+                            'Course Name': ThisItem.CourseName,
+                            'User Dept': varUserInfo.EMP_DEPT,
+                            'Requested User': varUserInfo.EMP_NAME,
+                            'Requested User Email': varUserInfo.EMP_EMAIL
+                        }
+                    )
+                Size: =If(App.Width<600 , 10 , 15)
+                Text: |-
+                    =If(
+                        !IsBlank(
+                            LookUp(
+                                'Course Requested',
+                                'Requested User' = varUserInfo.EMP_NAME And Title = ThisItem.Title,
+                                'Course Name'
+                            )
+                        ),
+                        If(
+                            LookUp(
+                                'Course Requested',
+                                'Requested User' = varUserInfo.EMP_NAME And Title = ThisItem.Title,
+                                Status
+                            ) = "OK",
+                            "Enrolled",
+                            "Requested"
+                        ),
+                        "Enroll"
+                    )
+                Width: =If(App.Width<600 , 80 , 150)
+                X: =Label10_2.X + (Label10_2.Width - Button4.Width)/2
+                Y: =13
+                ZIndex: =3
+
+        Container8 As groupContainer.manualLayoutContainer:
+            Fill: =RGBA(116, 116, 116, 1)
+            Height: =80
+            Width: =Parent.Width
+            ZIndex: =2
+
+            Label10 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =If(App.Width<600 , 12 , 18)
+                Text: ="Course Code"
+                Width: =Parent.Width/3
+                ZIndex: =1
+
+            Label10_1 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =If(App.Width<600 , 12 , 18)
+                Text: ="Course Name"
+                Width: =Label10.Width
+                X: =Label10.X+Label10.Width
+                ZIndex: =2
+
+            Label10_2 As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =If(App.Width<600 , 12 , 18)
+                Text: ="Apply "
+                Width: =Label10.Width
+                X: =Label10_1.Width+Label10_1.X
+                ZIndex: =3
+
+    Navbar_3 As Navbar:
+        NavTableItems: =If(varUserIsAdmin , AdminNavTableData , varUserIsAssociate , AssociateNavTableData , HRNavTableData)
+        OnHamButtonClick: |-
+            =Set(VarUserProfileShow, false);
+            Set(VarSidebarShow, !VarSidebarShow);
+        OnLogoClick: |-
+            =//Refresh All Datasources
+            Concurrent(
+                Refresh('Course Requested'),
+                Refresh('Tickets Information'),
+                Refresh('Topics per Course'),
+                Refresh('User Information'),
+                Refresh('All Learning Paths'),
+                Refresh('Topic Done By User')
+            );
+        OnSelectAnyNavItem: =Set(VarUserProfileShow, false);
+        OnUserbtnClick: |-
+            =Set(VarSidebarShow, false);
+            Set(VarUserProfileShow, !VarUserProfileShow);
+        ZIndex: =3
+
+    SideNavbar_MobORipad_3 As SideNavbar_MobORipad:
+        OnSelectCancelSidebar: =Set(VarSidebarShow, !VarSidebarShow)
+        SIdebarItemsTable: =If(varUserIsAdmin , AdminNavTableData , varUserIsAssociate , AssociateNavTableData , HRNavTableData)
+        Visible: =VarSidebarShow
+        X: =Navbar_3.Width- SideNavbar_MobORipad_3.Width
+        Y: =80
+        ZIndex: =4
+
+    CMP_UserInfo_3 As CMP_UserInfo:
+        CurrentUserData: =varUserInfo
+        Visible: =VarUserProfileShow
+        X: =Max(App.Width, App.MinScreenWidth)-CMP_UserInfo_3.Width
+        Y: =80
+        ZIndex: =5
+

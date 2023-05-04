@@ -1,0 +1,90 @@
+Navbar As CanvasComponent:
+    CurrentActiveScreen: =App.ActiveScreen.Name
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =80
+    NavTableItems: =
+    OnHamButtonClick: ="Text"
+    OnLogoClick: ="Text"
+    OnSelectAnyNavItem: =true
+    OnUserbtnClick: ="Text"
+    Width: =Max(App.Width, App.MinScreenWidth)
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Con_Header As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(0, 16, 96, 1)
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Navbar_Gal_Items As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =80
+            Items: =Navbar.NavTableItems
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |-
+                =Navbar.OnSelectAnyNavItem();
+                Navigate(ThisItem.Screen);
+            TemplateSize: =66
+            Visible: |
+                =!(Icon_ham_menu.Visible)
+            Width: =800
+            WrapCount: =CountRows(Navbar_Gal_Items.AllItems)
+            X: =(Con_Header.Width-Navbar_Gal_Items.Width)/2
+            ZIndex: =1
+
+            lbl_title As label:
+                Align: =Align.Center
+                Color: =Icon_logo.Color
+                FontWeight: =FontWeight.Semibold
+                Height: =44
+                OnSelect: =Select(Parent)
+                Size: =12
+                Text: =ThisItem.Title
+                Width: =193.75
+                Y: =8
+                ZIndex: =1
+
+            rect_active As rectangle:
+                Fill: =Icon_logo.Color
+                Height: =5
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.Screen.Name=Navbar.CurrentActiveScreen
+                Width: =80
+                X: =56
+                Y: =47
+                ZIndex: =2
+
+        "Icon_user As icon.'3DPrinting'":
+            Color: =Icon_logo.Color
+            Height: =60
+            Icon: =Icon.Person
+            OnSelect: =Navbar.OnUserbtnClick()
+            Width: =60
+            X: =If(Max(App.Width, App.MinScreenWidth)<1080, Con_Header.Width-175 , Con_Header.Width-85 )
+            Y: =10
+            ZIndex: =3
+
+        "Icon_ham_menu As icon.'3DPrinting'":
+            Color: =Icon_logo.Color
+            Height: =60
+            Icon: =Icon.Hamburger
+            OnSelect: =Navbar.OnHamButtonClick()
+            Visible: =Max(App.Width, App.MinScreenWidth)<1080
+            Width: =60
+            X: =Con_Header.Width-85
+            Y: =10
+            ZIndex: =4
+
+        "Icon_logo As icon.'3DPrinting'":
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =60
+            Icon: =Icon.Printing3D
+            OnSelect: =Navbar.OnLogoClick()
+            Width: =60
+            X: =25
+            Y: =10
+            ZIndex: =5
+

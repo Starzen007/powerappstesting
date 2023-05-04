@@ -1,0 +1,214 @@
+CMP_UserInfo As CanvasComponent:
+    CurrentUserData: |-
+        ={
+            
+            EMP_NAME: "Nabil Jahan",
+            EMP_ROLE: "Player",
+            EMP_DEPT: "app dev",
+            EMP_RM: "abcd ef",
+            EMP_LOCATION: "abc",
+            EMP_MOB: 8547569581,
+            EMP_EMAIL: "abc@gmail.com",
+            EMP_ID: "HRM",
+            Title:"hhh"
+        }
+    Fill: =RGBA(227, 234, 243, 1)
+    Height: =400
+    Width: =If(Max(App.Width, App.MinScreenWidth)<=800,300,Max(App.Width, App.MinScreenWidth)>800 And Max(App.Width, App.MinScreenWidth)<1080,Max(App.Width, App.MinScreenWidth)/3,Max(App.Width, App.MinScreenWidth)/4)
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    user_img As image:
+        Height: =60
+        Image: =User().Image
+        ImagePosition: =ImagePosition.Fill
+        Width: =60
+        X: =18
+        Y: =12
+        ZIndex: =1
+
+    user_name As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =26
+        Size: =14
+        Text: =CMP_UserInfo.CurrentUserData.EMP_NAME
+        Width: =198
+        X: =18
+        Y: =79
+        ZIndex: =2
+
+    user_postANDdept As label:
+        Height: =26
+        Size: =10
+        Text: |-
+            =Proper(With({usernew:CMP_UserInfo.CurrentUserData},usernew.EMP_ROLE & " " & usernew.EMP_DEPT ))
+        X: =18
+        Y: =105
+        ZIndex: =3
+
+    work_lbl As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(202, 202, 202, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =35
+        PaddingLeft: =18
+        Size: =14
+        Text: ="Work"
+        Width: =Parent.Width
+        Y: =131
+        ZIndex: =4
+
+    lbl_Key_empID As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =26
+        Size: =12
+        Text: |-
+            ="EMP ID:"
+        Width: =113
+        X: =18
+        Y: =166
+        ZIndex: =5
+
+    lbl_Key_empDept As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =26
+        Size: =12
+        Text: |-
+            ="Department:"
+        Width: =113
+        X: =18
+        Y: =192
+        ZIndex: =6
+
+    lbl_Key_empRole As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =26
+        Size: =12
+        Text: |-
+            ="Designation:"
+        Width: =113
+        X: =18
+        Y: =218
+        ZIndex: =7
+
+    lbl_Key_empRM As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =26
+        Size: =12
+        Text: |-
+            ="Manager:"
+        Width: =113
+        X: =18
+        Y: =244
+        ZIndex: =8
+
+    lbl_Key_empLocation As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =26
+        Size: =12
+        Text: |-
+            ="Location:"
+        Width: =113
+        X: =18
+        Y: =270
+        ZIndex: =9
+
+    BasicInfo_lbl As label:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(202, 202, 202, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =35
+        PaddingLeft: =18
+        Size: =14
+        Text: ="Basic Info"
+        Width: =Parent.Width
+        X: =0.5
+        Y: =296
+        ZIndex: =10
+
+    lbl_Key_empMOB As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =26
+        Size: =12
+        Text: |-
+            ="Mobile No:"
+        Width: =113
+        X: =18
+        Y: =331
+        ZIndex: =11
+
+    lbl_Key_empEmail As label:
+        FontWeight: =FontWeight.Semibold
+        Height: =26
+        Size: =12
+        Text: |-
+            ="Email:"
+        Width: =113
+        X: =18
+        Y: =357
+        ZIndex: =12
+
+    emp_dept As label:
+        Height: =26
+        Size: =11
+        Text: =CMP_UserInfo.CurrentUserData.EMP_DEPT
+        Width: =147
+        X: =131
+        Y: =192
+        ZIndex: =13
+
+    emp_role As label:
+        Height: =26
+        Size: =11
+        Text: =Proper(CMP_UserInfo.CurrentUserData.EMP_ROLE)
+        Width: =147
+        X: =131
+        Y: =218
+        ZIndex: =14
+
+    emp_id As label:
+        Height: =26
+        Size: =11
+        Text: =CMP_UserInfo.CurrentUserData.Title
+        Width: =147
+        X: =131
+        Y: =166
+        ZIndex: =15
+
+    emp_RM As label:
+        Height: =26
+        Size: =11
+        Text: =CMP_UserInfo.CurrentUserData.EMP_RM
+        Width: =147
+        X: =131
+        Y: =244
+        ZIndex: =16
+
+    emp_Location As label:
+        Height: =26
+        Size: =11
+        Text: =CMP_UserInfo.CurrentUserData.EMP_LOCATION
+        Width: =147
+        X: =131
+        Y: =270
+        ZIndex: =17
+
+    emp_mob As label:
+        Height: =26
+        Size: =11
+        Text: =CMP_UserInfo.CurrentUserData.EMP_MOB
+        Width: =147
+        X: =131
+        Y: =331
+        ZIndex: =18
+
+    emp_email As label:
+        Height: =26
+        Size: =11
+        Text: =First(Split(CMP_UserInfo.CurrentUserData.EMP_EMAIL,"@")).Value&"@nj.com"
+        Width: =147
+        X: =131
+        Y: =357
+        ZIndex: =19
+

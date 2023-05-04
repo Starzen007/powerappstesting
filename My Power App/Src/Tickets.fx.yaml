@@ -1,0 +1,717 @@
+Tickets As screen:
+    OnVisible: |
+        =Set(varTicketCancel,false);
+
+    ContainerGallery_User As groupContainer.manualLayoutContainer:
+        Height: |-
+            =If(varUserInfo.EMP_ROLE="ADMIN",Parent.Height-Navbar_3.Height,
+            396)
+        Width: =ContainerForm_User.Width
+        Y: |-
+            =If(varUserInfo.EMP_ROLE="ADMIN",Navbar_4.Height,
+            ContainerForm_User.Height+Navbar_4.Height)
+        ZIndex: =1
+
+        Gal_Ticket_History As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =394
+            Items: |-
+                =If(varUserInfo.EMP_ROLE="ADMIN",
+                SortByColumns('Tickets Information',"ID",SortOrder.Descending) ,SortByColumns(Filter('Tickets Information',Sender_Email=User().Email),"ID",SortOrder.Descending) )
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |-
+                =Set(varselectedTicket,Gal_Ticket_History.Selected);
+                Set(varSubmitandCancelbtn,false);
+                Set(varticketPopup,true);
+            TemplatePadding: =0
+            TemplateSize: =66
+            Width: =Parent.Width
+            Y: =lbl_Raise_Ticket_1.Height+lbl_tkt_history_header_title.Height
+            ZIndex: =1
+
+            Label_tkt_history_txt_title As label:
+                Align: =Align.Center
+                Height: =42
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.Title
+                Visible: =lbl_tkt_history_header_title.Visible
+                Width: =lbl_tkt_history_header_title.Width
+                X: =lbl_tkt_history_header_title.X
+                Y: =3
+                ZIndex: =1
+
+            Label_tkt_history_txt_des As label:
+                Align: =Align.Center
+                Height: =42
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.Description
+                Visible: =lbl_tkt_history_header_description.Visible
+                Width: =lbl_tkt_history_header_description.Width
+                X: =lbl_tkt_history_header_description.X
+                Y: =3
+                ZIndex: =2
+
+            Label_tkt_history_txt_currstatus As label:
+                Align: =Align.Center
+                Color: |-
+                    =//RGBA(0, 0, 0, 1)
+                    If(ThisItem.Current_Condition.Value="Rejected",Color.Red , ThisItem.Current_Condition.Value="Solved"  , Color.Green , RGBA(212, 162, 15, 1))
+                Height: =42
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.Current_Condition.Value
+                Visible: =lbl_tkt_history_header_currStatus.Visible
+                Width: =lbl_tkt_history_header_currStatus.Width
+                X: =lbl_tkt_history_header_currStatus.X
+                Y: =3
+                ZIndex: =3
+
+            Container10 As groupContainer.verticalAutoLayoutContainer:
+                Height: =66
+                LayoutAlignItems: =LayoutAlignItems.Center
+                LayoutGap: =20
+                LayoutJustifyContent: =LayoutJustifyContent.Center
+                LayoutMode: =LayoutMode.Auto
+                Visible: =lbl_tkt_history_header_Admin_Action.Visible
+                Width: =lbl_tkt_history_header_Admin_Action.Width
+                X: =lbl_tkt_history_header_Admin_Action.X
+                ZIndex: =4
+
+                Icon2_1 As icon.clearDrawing:
+                    Height: =38
+                    Icon: =Icon.Edit
+                    OnSelect: |-
+                        =Set(varselectedTicket,Gal_Ticket_History.Selected);
+                        Set(varticketPopup,true);
+                        Set(varSubmitandCancelbtn,true);
+                    Visible: =lbl_tkt_history_header_Admin_Action.Visible
+                    Width: =44
+                    X: =Icon2_1.Width
+                    Y: =15
+                    ZIndex: =1
+
+                Icon2 As icon.clearDrawing:
+                    Height: =38
+                    Icon: =Icon.Trash
+                    OnSelect: =Remove('Tickets Information',ThisItem)
+                    Visible: =lbl_tkt_history_header_Admin_Action.Visible
+                    Width: =44
+                    X: =Parent.Width- Icon2.Width -15
+                    Y: =15
+                    ZIndex: =2
+
+            Label_tkt_history_txt_sendername As label:
+                Align: =Align.Center
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =42
+                OnSelect: =Select(Parent)
+                Text: =ThisItem.Sender_Name
+                Visible: =lbl_tkt_history_header_Admin_Sender.Visible
+                Width: =lbl_tkt_history_header_Admin_Sender.Width
+                X: =lbl_tkt_history_header_Admin_Sender.X
+                Y: =3
+                ZIndex: =5
+
+        lbl_Raise_Ticket_1 As label:
+            FontWeight: =FontWeight.Bold
+            PaddingLeft: =15
+            Size: |-
+                =If(App.Width<510 , 12,
+                18)
+            Text: ="Ticket History"
+            Width: |-
+                =If(App.Width<510 , 170,
+                254)
+            ZIndex: =2
+
+        Container1 As groupContainer.manualLayoutContainer:
+            Height: =48
+            Width: =Parent.Width
+            Y: =lbl_Raise_Ticket_1.Height
+            ZIndex: =3
+
+            lbl_tkt_history_header_title As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Fill: =RGBA(39, 67, 125, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =15
+                Text: ="Title"
+                Width: |-
+                    =If(
+                        (varUserInfo.EMP_ROLE = "ADMIN"),
+                        If(
+                            App.Width < 500,
+                            App.Width / 2,
+                            275
+                        ),
+                        Parent.Width / 3
+                    )
+                X: =If((varUserInfo.EMP_ROLE="ADMIN"),lbl_tkt_history_header_Admin_Sender.X+lbl_tkt_history_header_Admin_Sender.Width - Slider1.Value,0)
+                ZIndex: =1
+
+            lbl_tkt_history_header_currStatus As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Fill: =RGBA(39, 67, 125, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =15
+                Text: ="Current Status"
+                Width: =lbl_tkt_history_header_title.Width
+                X: =lbl_tkt_history_header_description.X+lbl_tkt_history_header_description.Width
+                ZIndex: =2
+
+            lbl_tkt_history_header_description As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Fill: =RGBA(39, 67, 125, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =15
+                Text: ="Description"
+                Width: =lbl_tkt_history_header_title.Width
+                X: =lbl_tkt_history_header_title.Width+lbl_tkt_history_header_title.X
+                ZIndex: =3
+
+            lbl_tkt_history_header_Admin_Action As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Fill: =RGBA(39, 67, 125, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =15
+                Text: ="Action"
+                Visible: =(varUserInfo.EMP_ROLE="ADMIN")
+                Width: =lbl_tkt_history_header_title.Width
+                X: =lbl_tkt_history_header_currStatus.X+lbl_tkt_history_header_currStatus.Width
+                ZIndex: =4
+
+            lbl_tkt_history_header_Admin_Sender As label:
+                Align: =Align.Center
+                Color: =RGBA(255, 255, 255, 1)
+                Fill: =RGBA(39, 67, 125, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =15
+                Text: ="Sender"
+                Visible: =(varUserInfo.EMP_ROLE="ADMIN")
+                Width: |-
+                    =If(
+                        (varUserInfo.EMP_ROLE = "ADMIN"),
+                        If(
+                            App.Width < 500,
+                            App.Width / 2,
+                            275
+                        ),
+                        Parent.Width / 3
+                    )
+                ZIndex: =5
+
+        Slider1 As slider:
+            Default: =0
+            Max: =If((lbl_tkt_history_header_Admin_Sender.Width)*5-App.Width >=0 , (lbl_tkt_history_header_Admin_Sender.Width)*5-App.Width,0)
+            Visible: =lbl_tkt_history_header_Admin_Sender.Visible
+            Width: =lbl_Raise_Ticket_1.Width
+            X: =Parent.Width -  lbl_Raise_Ticket_1.Width
+            ZIndex: =6
+
+    ContainerForm_User As groupContainer.manualLayoutContainer:
+        Fill: =RGBA(227, 234, 243, 1)
+        Height: =292
+        Visible: =!(varUserInfo.EMP_ROLE="ADMIN")
+        Width: =App.Width
+        Y: =Navbar_4.Height
+        ZIndex: =2
+
+        lbl_Raise_Ticket As label:
+            FontWeight: =FontWeight.Bold
+            PaddingBottom: =0
+            PaddingLeft: =15
+            Size: =18
+            Text: ="Raise Ticket"
+            VerticalAlign: =VerticalAlign.Top
+            Width: =254
+            ZIndex: =1
+
+        lbl_ticket_title As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            PaddingLeft: =15
+            Size: =15
+            Text: |-
+                ="Title:"
+            Width: =184
+            Y: =40
+            ZIndex: =2
+
+        txtinput_ticket_title As text:
+            Default: =""
+            Height: =50
+            HintText: ="Enter Title"
+            OnChange: =Set(varTicketCancel,true);
+            Width: =txtinput_ticket_des.Width
+            X: =184
+            Y: =40
+            ZIndex: =3
+
+        lbl_ticket_des As label:
+            FontWeight: =FontWeight.Semibold
+            Height: =50
+            PaddingLeft: =15
+            Size: =15
+            Text: |-
+                ="Description:"
+            Width: =184
+            Y: =102
+            ZIndex: =4
+
+        txtinput_ticket_des As text:
+            Default: =""
+            Height: =118
+            HintText: ="Enter Description"
+            Mode: =TextMode.MultiLine
+            OnChange: =Set(varTicketCancel,true);
+            Width: |+
+                =If(
+                    App.Width <= 800,
+                    Parent.Width/2,
+                    App.Width > 800 And App.Width < 1200,
+                    Parent.Width/2,
+                    Parent.Width/3
+                )
+                
+            X: =184
+            Y: =102
+            ZIndex: =5
+
+        Container11 As groupContainer.horizontalAutoLayoutContainer:
+            Height: =53
+            LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+            LayoutMode: =LayoutMode.Auto
+            Width: =txtinput_ticket_title.Width
+            X: =15
+            Y: =232
+            ZIndex: =8
+
+            Button2 As button:
+                Height: =Parent.Height
+                OnSelect: |-
+                    =Patch(
+                        'Tickets Information',
+                        Defaults('Tickets Information'),
+                        {
+                            Title: txtinput_ticket_title.Text,
+                            Description: txtinput_ticket_des.Text,
+                            Sender_Name: varUserInfo.EMP_NAME,
+                            Sender_Email: User().Email
+                        }
+                    );
+                    Refresh('Tickets Information');
+                    Reset(txtinput_ticket_title);
+                    Reset(txtinput_ticket_des);
+                    Set(varTicketCancel,false);
+                Size: |-
+                    =If(
+                        App.Width <= 800,
+                       10,
+                        App.Width > 800 And App.Width < 1200,
+                        12,
+                       15
+                    )
+                Text: ="Raise a Ticket"
+                Width: =Parent.Width/2 - 20
+                X: =22
+                Y: =239
+                ZIndex: =1
+
+            Button2_1 As button:
+                Height: =Parent.Height
+                OnSelect: |-
+                    =Reset(txtinput_ticket_title);
+                    Reset(txtinput_ticket_des);
+                    Set(varTicketCancel,false);
+                Text: ="Cancel"
+                Visible: =varTicketCancel
+                Width: =Parent.Width/2 - 20
+                X: =264
+                Y: =239
+                ZIndex: =2
+
+    Navbar_4 As Navbar:
+        NavTableItems: =If(varUserIsAdmin , AdminNavTableData , varUserIsAssociate , AssociateNavTableData , HRNavTableData)
+        OnHamButtonClick: |-
+            =Set(VarUserProfileShow, false);
+            Set(VarSidebarShow, !VarSidebarShow);
+        OnLogoClick: |-
+            =//Refresh All Datasources
+            Concurrent(
+                Refresh('Course Requested'),
+                Refresh('Tickets Information'),
+                Refresh('Topics per Course'),
+                Refresh('User Information'),
+                Refresh('All Learning Paths'),
+                Refresh('Topic Done By User')
+            );
+        OnSelectAnyNavItem: =Set(VarUserProfileShow, false);
+        OnUserbtnClick: |-
+            =Set(VarSidebarShow, false);
+            Set(VarUserProfileShow,!VarUserProfileShow );
+        ZIndex: =3
+
+    SideNavbar_MobORipad_4 As SideNavbar_MobORipad:
+        OnSelectCancelSidebar: =Set(VarSidebarShow, !VarSidebarShow)
+        SIdebarItemsTable: =If(varUserIsAdmin , AdminNavTableData , varUserIsAssociate , AssociateNavTableData , HRNavTableData)
+        Visible: =VarSidebarShow
+        X: =Navbar_4.Width- SideNavbar_MobORipad_4.Width
+        Y: =80
+        ZIndex: =4
+
+    CMP_UserInfo_4 As CMP_UserInfo:
+        CurrentUserData: =varUserInfo
+        Visible: =VarUserProfileShow
+        X: =Max(App.Width, App.MinScreenWidth)-CMP_UserInfo_4.Width
+        Y: =80
+        ZIndex: =5
+
+    Canvas20_1 As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height
+        Visible: =varticketPopup
+        Width: =Parent.Width
+        Y: =Navbar_4.Height + Navbar_4.Y
+        ZIndex: =7
+
+        DataCard20_1 As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =Parent.Height -100
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            Container2 As groupContainer.manualLayoutContainer:
+                Fill: =RGBA(152, 208, 70, 1)
+                Height: =Parent.Height
+                Visible: =varticketPopup
+                Width: =Parent.Width
+                ZIndex: =1
+
+                Icon3 As icon.CancelBadge:
+                    Icon: =Icon.CancelBadge
+                    OnSelect: =Set(varticketPopup,false);
+                    Width: =If(App.Width < 800 , 30 , App.Width >= 800 And App.Width < 1200, 50 , 64)
+                    X: =Parent.Width - Icon3.Width - 20
+                    Y: =5
+                    ZIndex: =17
+
+                Container12 As groupContainer.verticalAutoLayoutContainer:
+                    Height: =Parent.Height - Container12.Y
+                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                    LayoutDirection: =LayoutDirection.Vertical
+                    LayoutGap: =5
+                    LayoutMode: =LayoutMode.Auto
+                    LayoutOverflowY: =LayoutOverflow.Scroll
+                    Width: =TextInput2.Width+150
+                    X: =(Parent.Width - Container12.Width)/2
+                    Y: =Icon3.Y + Icon3.Height + 20
+                    ZIndex: =18
+
+                    Container13 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        LayoutOverflowY: =LayoutOverflow.Scroll
+                        Width: =Parent.Width
+                        ZIndex: =1
+
+                        Label2 As label:
+                            Align: =Align.Center
+                            FontWeight: =FontWeight.Semibold
+                            Height: =45
+                            Size: =15
+                            Text: ="Ticket ID"
+                            Width: =190
+                            X: =357
+                            Y: =48
+                            ZIndex: =1
+
+                        TextInput2 As text:
+                            Default: ="HRM"&varselectedTicket.ID
+                            DisplayMode: =DisplayMode.View
+                            Height: =45
+                            HintText: ="Ticket ID"
+                            Width: =txtinput_ticket_title.Width
+                            X: =547
+                            Y: =48
+                            ZIndex: =2
+
+                    Container14 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =2
+
+                        Label2_1 As label:
+                            Align: =Align.Center
+                            FontWeight: =FontWeight.Semibold
+                            Height: =45
+                            Size: =15
+                            Text: ="Title"
+                            Width: =190
+                            X: =357
+                            Y: =93
+                            ZIndex: =1
+
+                        TextInput2_1 As text:
+                            Default: =varselectedTicket.Title
+                            DisplayMode: =DisplayMode.View
+                            Height: =45
+                            HintText: ="Title"
+                            Width: =TextInput2.Width
+                            X: =547
+                            Y: =93
+                            ZIndex: =2
+
+                    Container14_1 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =100
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =3
+
+                        Label2_2 As label:
+                            Align: =Align.Center
+                            FontWeight: =FontWeight.Semibold
+                            Height: =45
+                            Size: =15
+                            Text: ="Description"
+                            Width: =190
+                            X: =357
+                            Y: =138
+                            ZIndex: =1
+
+                        TextInput2_2 As text:
+                            Default: =varselectedTicket.Description
+                            DisplayMode: =DisplayMode.View
+                            Height: =90
+                            HintText: ="Description"
+                            Mode: =TextMode.MultiLine
+                            Width: =TextInput2.Width
+                            X: =547
+                            Y: =138
+                            ZIndex: =2
+
+                    Container14_2 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =4
+
+                        Label2_3 As label:
+                            Align: =Align.Center
+                            FontWeight: =FontWeight.Semibold
+                            Height: =45
+                            Size: =15
+                            Text: ="Sender Name"
+                            Width: =190
+                            X: =357
+                            Y: =228
+                            ZIndex: =1
+
+                        TextInput2_3 As text:
+                            Default: =varselectedTicket.Sender_Name
+                            DisplayMode: =DisplayMode.View
+                            Height: =45
+                            HintText: ="Sender Name"
+                            Size: =If(App.Width<=800 , 10 , App.Width>800 And App.Width<1200 , 12 , 13)
+                            Width: =TextInput2.Width
+                            X: =547
+                            Y: =228
+                            ZIndex: =2
+
+                    Container14_3 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =5
+
+                        Label2_4 As label:
+                            Align: =Align.Center
+                            FontWeight: =FontWeight.Semibold
+                            Height: =45
+                            Size: =15
+                            Text: ="Sender Email"
+                            Width: =190
+                            X: =357
+                            Y: =273
+                            ZIndex: =1
+
+                        TextInput2_4 As text:
+                            Default: =varselectedTicket.Sender_Email
+                            DisplayMode: =DisplayMode.View
+                            Height: =45
+                            HintText: =" Sender Email"
+                            Size: =If(App.Width<=800 , 8 , App.Width>800 And App.Width<1200 , 10 , 13)
+                            Width: =TextInput2.Width
+                            X: =547
+                            Y: =273
+                            ZIndex: =2
+
+                    Container14_4 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =6
+
+                    Container14_5 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =7
+
+                        Label2_5 As label:
+                            Align: =Align.Center
+                            FontWeight: =FontWeight.Semibold
+                            Height: =45
+                            Size: =15
+                            Text: ="Status"
+                            Width: =190
+                            X: =357
+                            Y: =357
+                            ZIndex: =1
+
+                        Dropdown2 As dropdown:
+                            Default: =varselectedTicket.Current_Condition.Value
+                            DisplayMode: =If(varSubmitandCancelbtn,DisplayMode.Edit,DisplayMode.View)
+                            Height: =45
+                            Items: =Choices('Tickets Information'.Current_Condition)
+                            Width: =TextInput2.Width
+                            X: =547
+                            Y: =357
+                            ZIndex: =2
+
+                    Container14_6 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =100
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =8
+
+                        Label2_6 As label:
+                            Align: =Align.Center
+                            FontWeight: =FontWeight.Semibold
+                            Height: =45
+                            Size: =15
+                            Text: ="Admin Response"
+                            Width: =190
+                            X: =357
+                            Y: =422
+                            ZIndex: =1
+
+                        TextInput2_5 As text:
+                            Default: =varselectedTicket.Admin_Response
+                            DisplayMode: =If(varSubmitandCancelbtn,DisplayMode.Edit,DisplayMode.View)
+                            Height: =90
+                            HintText: ="Description"
+                            Mode: =TextMode.MultiLine
+                            Width: =TextInput2.Width
+                            X: =547
+                            Y: =422
+                            ZIndex: =2
+
+                    Container15 As groupContainer.horizontalAutoLayoutContainer:
+                        FillPortions: =0
+                        Height: =50
+                        LayoutGap: =25
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        ZIndex: =9
+
+                        Button3 As button:
+                            AlignInContainer: =AlignInContainer.Center
+                            OnSelect: |-
+                                =Set(varticketPopup,false);
+                                Patch(
+                                    'Tickets Information',
+                                    LookUp(
+                                        'Tickets Information',
+                                        ID = varselectedTicket.ID
+                                    ),
+                                    {
+                                        Admin_Response: TextInput2_5.Text,
+                                        Current_Condition: Dropdown2.SelectedText
+                                    }
+                                )
+                            Text: ="Submit"
+                            Visible: |
+                                =varSubmitandCancelbtn
+                            X: =432
+                            Y: =591
+                            ZIndex: =1
+
+                        Button3_1 As button:
+                            AlignInContainer: =AlignInContainer.Center
+                            OnSelect: =Set(varticketPopup,false);
+                            Text: ="Cancel"
+                            Visible: |
+                                =varSubmitandCancelbtn
+                            X: =326
+                            Y: =591
+                            ZIndex: =2
+
+                    Container14_7 As groupContainer.horizontalAutoLayoutContainer:
+                        AlignInContainer: =AlignInContainer.SetByContainer
+                        FillPortions: =0
+                        Height: =50
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutMinHeight: =100
+                        LayoutMinWidth: =250
+                        LayoutMode: =LayoutMode.Auto
+                        Width: =Parent.Width
+                        ZIndex: =10
+

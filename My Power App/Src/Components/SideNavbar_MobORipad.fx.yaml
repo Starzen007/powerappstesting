@@ -1,0 +1,82 @@
+SideNavbar_MobORipad As CanvasComponent:
+    CurrentActiveScreenSidebar: =App.ActiveScreen.Name
+    Fill: =RGBA(0, 13, 75, 1)
+    Height: =Max(App.Height, App.MinScreenHeight)-80
+    OnSelectCancelSidebar: ="Text"
+    SIdebarItemsTable: |-
+        =Table(
+            {
+                Title: "Title1",
+                Screen: App.ActiveScreen
+            },
+            {
+                Title: "Title2",
+                Screen: App.ActiveScreen
+            },
+            {
+                Title: "Title3",
+                Screen: App.ActiveScreen
+            },
+            {
+                Title: "Title4",
+                Screen: App.ActiveScreen
+            }
+        )
+    Width: =200
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Con_SIdebar As groupContainer.manualLayoutContainer:
+        Height: =Parent.Height
+        Width: =200
+        ZIndex: =1
+
+        Sidebar_Gal_Items As gallery.galleryVertical:
+            DelayItemLoading: =true
+            Height: =414
+            Items: =SideNavbar_MobORipad.SIdebarItemsTable
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |
+                =SideNavbar_MobORipad.OnSelectCancelSidebar();
+                Navigate(ThisItem.Screen);
+            TemplateSize: =86
+            Visible: |+
+                =true
+                
+            Width: =200
+            X: =
+            Y: =(Con_SIdebar.Height-Sidebar_Gal_Items.Height)/2
+            ZIndex: =1
+
+            lbl_title_1 As label:
+                Align: =Align.Center
+                Color: =Icon_cancel.Color
+                FontWeight: =FontWeight.Semibold
+                Height: =44
+                OnSelect: =Select(Parent)
+                Size: =12
+                Text: =ThisItem.Title
+                Width: =190
+                Y: =8
+                ZIndex: =1
+
+            rect_active_1 As rectangle:
+                Fill: =Icon_cancel.Color
+                Height: =5
+                OnSelect: =Select(Parent)
+                Visible: =ThisItem.Screen.Name=SideNavbar_MobORipad.CurrentActiveScreenSidebar
+                X: =20
+                Y: =52
+                ZIndex: =2
+
+        Icon_cancel As icon.Cancel:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =31
+            Icon: =Icon.CancelBadge
+            OnSelect: =SideNavbar_MobORipad.OnSelectCancelSidebar()
+            Width: =41
+            Y: =30
+            ZIndex: =2
+

@@ -1,0 +1,99 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |+
+        =//Refresh All Datasources
+        /*Concurrent(
+            Refresh('Course Requested'),
+            Refresh('Tickets Information'),
+            Refresh('Topics per Course'),
+            Refresh('User Information'),
+            Refresh('All Learning Paths'),
+            Refresh('Topic Done By User')
+        ); */
+        //Fetching User Details
+        ClearCollect(
+            AllUserInfo,
+            'User Information'
+        );
+        //Lookup Current User Details
+        Set(
+            varUserInfo,
+            LookUp(
+                AllUserInfo,
+                User().Email = EMP_EMAIL
+            )
+        );
+        //Lookup Current User Role
+        Concurrent(
+            Set(
+                varUserIsAdmin,
+                varUserInfo.EMP_ROLE = "ADMIN"
+            ),
+            Set(
+                varUserIsAssociate,
+                varUserInfo.EMP_ROLE = "ASSOCIATE"
+            ),
+            Set(
+                varUserIsHR,
+                varUserInfo.EMP_ROLE = "HR"
+            )
+        );
+        Concurrent(
+        // Collect Admin Nav Items
+        ClearCollect(
+            AdminNavTableData,
+            {
+                Title: "Dashboard",
+                Screen: Dashboard
+            },
+            {
+                Title: "Course Request",
+                Screen: 'All Learning Path'
+            },
+            {
+                Title: "Tickets Raised",
+                Screen: Tickets
+            }
+        ),
+        // Collect Associate Nav Items
+        ClearCollect(
+            AssociateNavTableData,
+            {
+                Title: "Dashboard",
+                Screen: Dashboard
+            },
+            {
+                Title: "My Learning Path",
+                Screen: 'My Learning Path'
+            },
+            {
+                Title: "All Learning Path",
+                Screen: 'All Learning Path'
+            },
+            {
+                Title: "Tickets",
+                Screen: Tickets
+            }
+        ),
+        // Collect HR Nav Items
+        ClearCollect(
+            HRNavTableData,
+            {
+                Title: "Dashboard",
+                Screen: Dashboard
+            },
+            {
+                Title: "Tickets Raised",
+                Screen: Tickets
+            }
+        ));
+        
+        
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

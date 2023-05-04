@@ -1,0 +1,47 @@
+{
+  "37627dda-9c64-4639-b641-546a27ab4c98": {
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1627/1.0.1627.3238/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://njcelebaltech.sharepoint.com/sites/PersonalProjectSite": {
+        "dataSources": {
+          "All Learning Paths": {
+            "tableName": "fc18d064-8444-44e7-a048-a126cc80a19d"
+          },
+          "Course Requested": {
+            "tableName": "519a101d-dbe3-482f-9457-3c7dfb6ff242"
+          },
+          "Tickets Information": {
+            "tableName": "de49602d-310d-453b-ba84-1bb739006ee5"
+          },
+          "Topic Done By User": {
+            "tableName": "7efc3c9d-0d3e-439c-973e-7d6e54c93fdf"
+          },
+          "Topics per Course": {
+            "tableName": "8f75e650-14e6-4276-8afe-67c50483b7cd"
+          },
+          "User Information": {
+            "tableName": "9f16ac45-204f-4701-939f-71947036ea4d"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "User Information",
+      "Tickets Information",
+      "Topics per Course",
+      "Course Requested",
+      "All Learning Paths",
+      "Topic Done By User"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "37627dda-9c64-4639-b641-546a27ab4c98"
+  }
+}
