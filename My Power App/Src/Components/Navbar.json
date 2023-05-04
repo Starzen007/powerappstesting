@@ -1788,7 +1788,7 @@
           },
           {
             "Category": "Design",
-            "InvariantScript": "RGBA(0, 16, 96, 1)",
+            "InvariantScript": "RGBA(255, 191, 0, 1)",
             "Property": "Fill",
             "RuleProviderType": "Unknown"
           },
@@ -1864,7 +1864,7 @@
       "OnSelectAnyNavItem",
       "OnLogoClick"
     ],
-    "LastModifiedTimestamp": "638187946756729944",
+    "LastModifiedTimestamp": "638187949816219280",
     "Name": "Navbar",
     "Rules": [
       {
@@ -2014,7 +2014,7 @@
   "IsPcfControl": false,
   "IsPremiumPcfControl": false,
   "IsWidgetTemplate": false,
-  "LastModifiedTimestamp": "638187946756729944",
+  "LastModifiedTimestamp": "638187949816219280",
   "Name": "f5dba99ef76d480e8952c7d04cf46655",
   "OverridableProperties": {},
   "Version": "638169877815327427"
