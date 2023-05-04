@@ -164,27 +164,6 @@
             Y: =Rating1.Y
             ZIndex: =7
 
-    Navbar_2 As Navbar:
-        NavTableItems: =If(varUserIsAdmin , AdminNavTableData , varUserIsAssociate , AssociateNavTableData , HRNavTableData)
-        OnHamButtonClick: |-
-            =Set(VarUserProfileShow, false);
-            Set(VarSidebarShow, !VarSidebarShow);
-        OnLogoClick: |-
-            =//Refresh All Datasources
-            Concurrent(
-                Refresh('Course Requested'),
-                Refresh('Tickets Information'),
-                Refresh('Topics per Course'),
-                Refresh('User Information'),
-                Refresh('All Learning Paths'),
-                Refresh('Topic Done By User')
-            );
-        OnSelectAnyNavItem: =Set(VarUserProfileShow, false);
-        OnUserbtnClick: |-
-            =Set(VarSidebarShow, false);
-            Set(VarUserProfileShow, !VarUserProfileShow);
-        ZIndex: =2
-
     SideNavbar_MobORipad_2 As SideNavbar_MobORipad:
         OnSelectCancelSidebar: =Set(VarSidebarShow, !VarSidebarShow)
         SIdebarItemsTable: =If(varUserIsAdmin , AdminNavTableData , varUserIsAssociate , AssociateNavTableData , HRNavTableData)
