@@ -13,7 +13,7 @@ Navbar As CanvasComponent:
     ZIndex: =1
 
     Con_Header As groupContainer.manualLayoutContainer:
-        Fill: =RGBA(0, 16, 96, 1)
+        Fill: =RGBA(255, 191, 0, 1)
         Height: =Parent.Height
         Width: =Parent.Width
         ZIndex: =1
