@@ -1302,9 +1302,3 @@ Dashboard As screen:
         Y: =240
         ZIndex: =7
 
-    DatePicker1 As datepicker:
-        Fill: =RGBA(0, 0, 0, 1)
-        X: =696
-        Y: =348
-        ZIndex: =8
-
