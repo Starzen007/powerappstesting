@@ -1298,7 +1298,7 @@ Dashboard As screen:
         Size: =50
         Text: ="Abcd"
         Width: =193
-        X: =1150
+        X: =App.Width - Label1.Width - 50
         Y: =240
         ZIndex: =7
 
