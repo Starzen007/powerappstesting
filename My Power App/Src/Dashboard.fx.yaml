@@ -1298,8 +1298,8 @@ Dashboard As screen:
         Size: =50
         Text: ="Abcd"
         Width: =193
-        X: =1046
-        Y: =222
+        X: =480
+        Y: =240
         ZIndex: =7
 
     DatePicker1 As datepicker:
