@@ -1308,14 +1308,3 @@ Dashboard As screen:
         Y: =348
         ZIndex: =8
 
-    Label1_1 As label:
-        Align: =Align.Center
-        FontWeight: =FontWeight.Bold
-        Height: =80
-        Size: =50
-        Text: ="Abcd dhbhdsbh"
-        Width: =193
-        X: =783
-        Y: =222
-        ZIndex: =9
-
