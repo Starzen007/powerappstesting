@@ -1291,14 +1291,3 @@ Dashboard As screen:
                         X: =Parent.Width-Button5_3.Width
                         ZIndex: =2
 
-    Label1 As label:
-        Align: =Align.Center
-        FontWeight: =FontWeight.Bold
-        Height: =80
-        Size: =50
-        Text: ="Abcd"
-        Width: =193
-        X: =App.Width - Label1.Width - 50
-        Y: =240
-        ZIndex: =7
-

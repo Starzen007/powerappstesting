@@ -146,7 +146,6 @@
     "Label_tkt_history_txt_des": 209,
     "Label_tkt_history_txt_sendername": 208,
     "Label_tkt_history_txt_title": 207,
-    "Label1": 72,
     "Label10": 61,
     "Label10_1": 62,
     "Label10_2": 63,
@@ -261,7 +260,7 @@
   },
   "FunctionParamsInvariantScripts": {},
   "FunctionParamsInvariantScriptsOnInstances": {},
-  "HeaderLastSavedDateTimeUTC": "05/10/2023 10:41:14",
+  "HeaderLastSavedDateTimeUTC": "05/10/2023 11:19:07",
   "IsLegacyComponentAllowGlobalScopeCase": false,
   "LocalConnectionIDReferences": {
     "37627dda-9c64-4639-b641-546a27ab4c98": "\"/providers/microsoft.powerapps/apis/shared_sharepointonline/connections/0f02dfa15f1d425d94c467d681f7e4db\""
@@ -454,7 +453,6 @@
     "Label_tkt_history_txt_des": {},
     "Label_tkt_history_txt_sendername": {},
     "Label_tkt_history_txt_title": {},
-    "Label1": {},
     "Label10": {},
     "Label10_1": {},
     "Label10_2": {},
@@ -710,7 +708,6 @@
     "Label_tkt_history_txt_des": 212,
     "Label_tkt_history_txt_sendername": 211,
     "Label_tkt_history_txt_title": 210,
-    "Label1": 71,
     "Label10": 60,
     "Label10_1": 61,
     "Label10_2": 62,
